@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="MiMoods.jnlp">
+  <information>
+    <title>MiMoods</title>
+    <vendor>CREED</vendor>
+    <description>Sample JavaFX 2.0 application.</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="joa-without-dlls.jar" size="4394972" download="eager" />
+    <jar href="MiMoods.jar" size="41804" download="eager" />
+    <jar href="joa-processor.jar" size="2988138" download="eager" />
+    <jar href="joa-src.jar" size="1867096" download="eager" />
+    <jar href="joa-without-dlls.jar" size="4394972" download="eager" />
+    <jar href="joa.jar" size="5510819" download="eager" />
+    <jar href="jsoup-1.8.2.jar" size="314991" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="100" height="100" main-class="addin1.TutorialApplication"  name="MiMoods" />
+  <update check="background"/>
+</jnlp>

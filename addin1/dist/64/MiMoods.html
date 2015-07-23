@@ -1,0 +1,43 @@
+<html><head>
+  <SCRIPT src="http://java.com/js/dtjava.js"></SCRIPT>
+<script>
+    function launchApplication(jnlpfile) {
+        dtjava.launch(            {
+                url : 'MiMoods.jnlp'
+            },
+            {
+                javafx : '8.0+'
+            },
+            {}
+        );
+        return false;
+    }
+</script>
+
+<script>
+    function javafxEmbed_appid() {
+        dtjava.embed(
+            {
+                id : 'appid',
+                url : 'MiMoods.jnlp',
+                placeholder : 'javafx-app-placeholder',
+                width : 100,
+                height : 100
+            },
+            {
+                javafx : '8.0+'
+            },
+            {}
+        );
+    }
+    <!-- Embed FX application into web page once page is loaded -->
+    dtjava.addOnloadCallback(javafxEmbed_appid);
+</script>
+
+</head><body>
+<h2>Test page for <b>MiMoods</b></h2>
+  <b>Webstart:</b> <a href='MiMoods.jnlp' onclick="return launchApplication('MiMoods.jnlp');">click to launch this app as webstart</a><br><hr><br>
+
+  <!-- Applet will be inserted here -->
+  <div id='javafx-app-placeholder'></div>
+</body></html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+    <ribbon>
+        <tabs>
+            <tab id="ExplorerTab" label="MiMoods">
+                <group id="Group1" label="Votes">
+                    <button id="Happy" getImage="getRibbonImage" size="large"
+                        tag="img/happy.png" label="Happy" onAction="onVotesButtonClicked" />
+                    <button id="Sad" getImage="getRibbonImage" size="large"
+                        tag="img/sad.png" label="Sad" onAction="onVotesButtonClicked" />
+                    <button id="Angry" getImage="getRibbonImage" size="large"
+                        tag="img/angry.png" label="Angry" onAction="onVotesButtonClicked" />
+                    <button id="Inspired" getImage="getRibbonImage" size="large"
+                        tag="img/inspired.png" label="Inspired" onAction="onVotesButtonClicked" />
+                    <button id="Afraid" getImage="getRibbonImage" size="large"
+                        tag="img/afraid.png" label="Afraid" onAction="onVotesButtonClicked" />    
+                    <button id="Annoyed" getImage="getRibbonImage" size="large"
+                        tag="img/annoyed.png" label="Annoyed" onAction="onVotesButtonClicked" />
+                    <button id="Neutral" getImage="getRibbonImage" size="large"
+                        tag="img/neutral.png" label="Neutral" onAction="onVotesButtonClicked" />
+                </group>
+                <group id="Group2" label="Survey">
+                    <button id="Survey" getImage="getRibbonImage" size="large"
+                        tag="img/diagram.png" label="View Survey" onAction="onSurveyButtonClicked" />
+                </group>
+            </tab>
+        </tabs>
+     
+    </ribbon>
+</customUI>

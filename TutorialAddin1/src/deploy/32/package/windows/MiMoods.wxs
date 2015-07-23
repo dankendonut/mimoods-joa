@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Product Id="4c4775d1-70b0-4c63-ac76-c7de986e300a" Name="MiMoods" 
+             Language="1033" Version="1.0"
+             Manufacturer="CREED" 
+             UpgradeCode="e7b882e6-110a-4376-8858-7e1218baf380">
+        <Package Description="MiMoods" Comments="None"
+                 InstallerVersion="200" Compressed="yes"
+                 InstallScope="perUser" Platform="x64"/>
+        <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+
+        <!-- We use RemoveFolderEx to ensure application folder is fully 
+             removed on uninstall. Including files created outside of MSI
+             after application had been installed (e.g. on AU or user state).
+             
+             Hovewer, RemoveFolderEx is only available in WiX 3.6, 
+             we will comment it out if we running older WiX.
+
+             RemoveFolderEx requires that we "remember" the path for uninstall.
+             Read the path value and set the APPLICATIONFOLDER property with the value.
+        -->
+        <Property Id="APPLICATIONFOLDER">
+            <RegistrySearch Key="SOFTWARE\CREED\MiMoods" 
+                            Root="HKCU" Type="raw" 
+                            Id="APPLICATIONFOLDER_REGSEARCH" Name="Path" />
+        </Property>
+        <DirectoryRef Id="APPLICATIONFOLDER">
+            <Component Id="CleanupMainApplicationFolder" Guid="*" Win64="yes">
+                <RegistryValue Root="HKCU"
+                                   Key="SOFTWARE\CREED\MiMoods"
+                                   Name="Path" Type="string" Value="[APPLICATIONFOLDER]"
+                                   KeyPath="yes" />
+                <!-- We need to use APPLICATIONFOLDER variable here or RemoveFolderEx
+                     will not remove on "install". But only if WiX 3.6 is used. -->
+                     
+                  <util:RemoveFolderEx On="uninstall" Property="APPLICATIONFOLDER" />
+                
+            </Component>
+        </DirectoryRef>        
+        <?include bundle.wxi ?>
+        <UI/>
+        <Icon Id="DesktopIcon.exe" SourceFile="MiMoods.ico" />
+        <Icon Id="StartMenuIcon.exe" SourceFile="MiMoods.ico" />
+
+		<CustomAction Id='RegisterServer' FileKey='LauncherId' ExeCommand='/RegisterServer user' Return='ignore' />
+        <CustomAction Id='UnregisterServer' FileKey='LauncherId' ExeCommand='/UnregisterServer user' Return='ignore' />
+
+        <InstallExecuteSequence>
+            <Custom Action='RegisterServer' After='InstallFinalize'>NOT Installed</Custom>
+            <Custom Action='UnregisterServer' After='InstallInitialize'>(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</Custom>
+        </InstallExecuteSequence>
+
+    </Product>
+</Wix>

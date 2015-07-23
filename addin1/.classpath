@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/wasjava/hackaton/joa-master/java/lib/joa.jar" sourcepath="E:/wasjava/hackaton/joa-master/java/lib/joa-src.jar"/>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="jsoup-1.8.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
